@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>VueJS Tutorials</title>
+    <link href="styles.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="vue-app">
+        hello,{{name}}
+        <p>微信：{{wechat}}</p>
+        <p>method:{{ greet('morning')}}</p>
+        <p>{{ haveLunch() }}</p>
+        <p>
+            <a :href="website">百度</a>
+        </p>
+        <p v-html="websiteTag"></p>
+        <p><input v-bind:value="name"></p>
+        <p>{{age}}</p>
+        <button v-on:click="age++">add age</button>
+        <button @click="age--">add age</button>
+        <button v-on:click="add(2)">add age 2</button>
+        <button @click="sub(2)">sub age 2</button>
+        <button v-on:dblclick="add(10)">add age</button>
+        <button @dblclick="sub(10)">add age</button>
+
+        <div id="canvas" v-on:mousemove.capture="updateXY">{{ x }} , {{ y }}</div>
+
+        <!-- 事件修饰符测试 -->
+        <div>
+            <a @click.prevent="handleClick" href="https:www.baidu.com">百度</a>
+        </div>
+        <!-- 键盘事件测试 -->
+        <div>
+            <!-- 增加属性修饰符，表示按下回车才会触发 -->
+            <p>姓名</p>
+            <input type="text" v-on:keyup.enter="logName" />
+            <p>年龄</p>
+            <!-- 表示按下alt和回车才会触发 -->
+            <input type="text" v-on:keydown.alt.enter="logAge" />
+        </div>
+        <!-- 双向数据绑定，只在input select textarea起作用 -->
+        <p>姓名</p>
+        <input type="text" v-model="tName" />
+        <span>{{tName}}</span>
+        <p>年龄</p>
+        <!-- 表示按下alt和回车才会触发 -->
+        <input type="text" v-model.lazy="tAge" />
+        <span>{{tAge}}</span>
+    </div>
+
+</body>
+
+<script src="app.js"></script>
+
+</html>
